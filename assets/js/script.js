@@ -272,7 +272,13 @@ var dragLeaveHandler = function(event) {
 };
 
 var saveTasks = function() {
-  localStorage.setItem("tasks", tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+var loadTasks = function() {
+  tasks = localStorage.getItem("tasks");
+  console.log();
+
 };
 
 pageContentEl.addEventListener("click", taskButtonHandler);
@@ -281,3 +287,5 @@ pageContentEl.addEventListener("dragstart", dragTaskHandler);
 pageContentEl.addEventListener("dragover", dropZoneDragHandler);
 pageContentEl.addEventListener("drop", dropTaskHandler);
 pageContentEl.addEventListener("dragleave", dragLeaveHandler);
+
+loadTasks();
